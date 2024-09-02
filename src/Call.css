@@ -1,0 +1,72 @@
+#name{
+    font-size: 35px;
+    font-family: "Segoe UI";
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+#status{
+    font-size: 15px;
+    font-family: "Segoe UI";
+    text-align: center;
+    margin-top: 12px;
+    margin-bottom: 40px;
+}
+.pannel{
+    display: flex;
+    margin: 5px 45px;
+}
+.button_normal{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid hsla(0,0%,100%,.7);
+    margin: 0 auto;
+    text-align: center;
+}
+.button_hang{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(255,0,0,.75);
+    border: 2px solid rgba(255,0,0,.1);
+    margin: 0 auto;
+    transition: .5s;
+    text-align: center;
+}
+.button_disable{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    transition: .5s;
+    background-color: hsla(0,0%,59%,.4);
+    border: 1px solid hsla(0,0%,59%,.4);
+}
+.button_pick{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid hsla(0,0%,100%,.7);
+    background-color: hsla(0,0%,100%,.7);
+    margin: 0 auto;
+    text-align: center;
+    transition: .5s;
+}
+.button_svg{
+    position: relative;
+    width: 28px;
+    opacity: .9;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.button_label{
+    text-align: center;
+    padding: 8px;
+    padding-bottom: 20px;
+    font-size: 14px;
+}
+.container{
+    flex: 1;
+}
