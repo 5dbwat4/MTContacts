@@ -8,7 +8,6 @@ import svg3 from "./assets/svg3.svg";
 import svg4 from "./assets/svg4.svg";
 import svg5 from "./assets/svg5.svg";
 import svg6 from "./assets/svg6.svg";
-// import audioMap from "./audioMap";
 
 const { num2cn, cn2num } = require("./transform");
 
@@ -28,10 +27,6 @@ class Call extends React.Component {
     return num2cn(group) + "团" + num2cn(company) + "连";
   }
 
-  // GetMP3(group, company) {
-  //   const mp3 = audioMap["" + group + "-" + company + ".mp3"];
-  //   return mp3;
-  // }
 
   AudioPath(group, company) {
     return (
@@ -49,10 +44,8 @@ class Call extends React.Component {
       <>
         <audio
           id="audio"
-          // src="./audio/1_1.mp3"
           src={this.AudioPath(this.props.group, this.props.company)}
-          // src={this.GetMP3(this.props.group, this.props.company)}
-          // autoPlay
+          autoPlay
           muted={this.state.mute}
           volume={this.state.volume}
           onEnded={(e) => {
