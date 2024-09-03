@@ -23,4 +23,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # audios
-/src/audios
+*/audios
