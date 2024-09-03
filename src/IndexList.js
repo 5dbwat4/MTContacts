@@ -22,11 +22,10 @@ class IndexList extends React.Component {
     this.props.setdata(iscall, group, company);
   }
   handleClick = (e) => {
-    // console.log("e.target.innerHTML", e.target.innerHTML);
-    let regimentCN = e.target.innerHTML.slice(0, 1);
+    let regimentCN = e.target.innerText.slice(0, 1);
     let regiment = cn2num(regimentCN);
     // console.log("regiment", regiment);
-    let company = data[regiment - 1].items.indexOf(e.target.innerHTML) + 1;
+    let company = data[regiment - 1].items.indexOf(e.target.innerText) + 1;
     // console.log("company", company);
     this.setdata(true, regiment, company);
   };
@@ -45,8 +44,8 @@ class IndexList extends React.Component {
               >
                 <List>
                   {items.map((item, index) => (
-                    <List.Item key={index}>
-                      <span onClick={this.handleClick}>{item}</span>
+                    <List.Item key={index} onClick={this.handleClick}>
+                      <span>{item}</span>
                     </List.Item>
                   ))}
                 </List>
