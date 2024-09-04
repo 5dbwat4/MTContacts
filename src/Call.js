@@ -27,7 +27,6 @@ class Call extends React.Component {
     return num2cn(group) + "团" + num2cn(company) + "连";
   }
 
-
   AudioPath(group, company) {
     return (
       (process.env.PUBLIC_URL ?? "") +
@@ -54,15 +53,8 @@ class Call extends React.Component {
             }, 1500);
           }}
           onCanPlay={(e) => {
-            const audio = document.getElementById("audio");
-            const result = audio.play();
-            //result可能为undefined
-            result?.catch(() => {
-              window.WeixinJSBridge.invoke('getNetworkType', {}, () => {
-                audio.play()
-              }, false)
-            })
-
+            let audio = document.getElementById("audio");
+            audio.play();
             this.setState({ status: 1 });
           }}
         />
@@ -100,8 +92,8 @@ class Call extends React.Component {
               {this.state.status === 3
                 ? description[this.state.status]
                 : this.state.mute === true
-                  ? description[2]
-                  : description[this.state.status]}
+                ? description[2]
+                : description[this.state.status]}
             </div>
           </center>
           <div className="pannel">
@@ -111,8 +103,8 @@ class Call extends React.Component {
                   this.state.status === 3
                     ? "button_disable"
                     : this.state.mute
-                      ? "button_pick"
-                      : "button_normal"
+                    ? "button_pick"
+                    : "button_normal"
                 }
                 onClick={(e) => {
                   console.log(e);
@@ -135,8 +127,8 @@ class Call extends React.Component {
                   this.state.status === 3
                     ? "button_disable"
                     : this.state.louder
-                      ? "button_pick"
-                      : "button_normal"
+                    ? "button_pick"
+                    : "button_normal"
                 }
                 onClick={(e) => {
                   this.setState({
