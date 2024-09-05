@@ -28,14 +28,10 @@ class Call extends React.Component {
   }
 
   AudioPath(group, company) {
-    return (
-      (process.env.PUBLIC_URL ?? "") +
-      "/audios/" +
-      group +
-      "-" +
-      company +
-      ".mp3"
-    );
+    return ( //DON'T REMOVE THE PARENTHESES
+      (process.env.PUBLIC_URL?.replace(/\/+$/, '') ?? "") //去掉末尾的斜杠，防止拼接产生连续斜杠
+      + `/audios/${group}-${company}.mp3`
+    )
   }
 
   render() {
@@ -98,9 +94,9 @@ class Call extends React.Component {
             <div id="status">
               {this.state.status === 3
                 ? description[this.state.status]
-                : this.state.mute === true
+                : (this.state.mute === true
                   ? description[2]
-                  : description[this.state.status]}
+                  : description[this.state.status])}
             </div>
           </center>
           <div className="pannel">
