@@ -1,17 +1,13 @@
 import React, { useState } from "react";
-import { Badge, TabBar } from "antd-mobile";
-// import { div } from 'demos'
+import { TabBar as AntdTabBar } from "antd-mobile";
 import {
   AppOutline,
-  MessageOutline,
-  MessageFill,
-  UnorderedListOutline,
   AppstoreOutline,
   UserOutline,
   ClockCircleOutline,
 } from "antd-mobile-icons";
 
-export default () => {
+export default function TabBar() {
   const tabs = [
     {
       key: "Collection",
@@ -40,7 +36,7 @@ export default () => {
   return (
     <>
       <div>
-        <TabBar
+        <AntdTabBar
           style={{
             position: "sticky",
             bottom: "0px",
@@ -50,9 +46,9 @@ export default () => {
           activeKey="Message"
         >
           {tabs.map((item) => (
-            <TabBar.Item key={item.key} icon={item.icon} title={item.title} />
+            <AntdTabBar.Item key={item.key} icon={item.icon} title={item.title} />
           ))}
-        </TabBar>
+        </AntdTabBar>
       </div>
     </>
   );

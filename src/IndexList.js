@@ -1,6 +1,6 @@
 import React from "react";
 import { IndexBar, List } from "antd-mobile";
-const { num2cn, cn2num } = require("./transform");
+import { num2cn, cn2num } from "./transform";
 
 const companyNum = [
   { title: "一团", count: 19 },

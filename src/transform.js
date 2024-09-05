@@ -13,7 +13,7 @@ const num2cnMap = {
 };
 
 // transform arabic number to chinese number
-function num2cn(num) {
+export function num2cn(num) {
   if (num === 0) return "零";
 
   const digits = num.toString().split("").reverse();
@@ -57,7 +57,7 @@ const cnUnitMap = {
 };
 
 // transform chinese number to arabic number
-function cn2num(cn) {
+export function cn2num(cn) {
   let unit = 1;
   let num = 0;
   let currentNum = 0;
@@ -80,6 +80,3 @@ function cn2num(cn) {
   num += currentNum * unit;
   return num;
 }
-
-exports.cn2num = cn2num;
-exports.num2cn = num2cn;

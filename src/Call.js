@@ -9,7 +9,7 @@ import svg4 from "./assets/svg4.svg";
 import svg5 from "./assets/svg5.svg";
 import svg6 from "./assets/svg6.svg";
 
-const { num2cn, cn2num } = require("./transform");
+import { num2cn } from "./transform";
 
 const description = ["等待对方接听", "通话中", "静音...", "通话结束"];
 
@@ -47,14 +47,21 @@ class Call extends React.Component {
           autoPlay
           muted={this.state.mute}
           volume={this.state.volume}
-          onEnded={(e) => {
+          onEnded={() => {
             setTimeout(() => {
               this.props.setiscall(false);
             }, 1500);
           }}
-          onCanPlay={(e) => {
-            let audio = document.getElementById("audio");
-            audio.play();
+          onCanPlay={() => {
+            const audioEle = document.getElementById("audio");
+            const playResult = audioEle.play();
+            playResult?.catch(() => {
+              //此时WeixinJSBridge(在正确的域名下)必然可用
+              window.WeixinJSBridge.invoke('getNetworkType', {}, () => {
+                audioEle.play()
+              }, false)
+            })
+
             this.setState({ status: 1 });
           }}
         />
@@ -92,8 +99,8 @@ class Call extends React.Component {
               {this.state.status === 3
                 ? description[this.state.status]
                 : this.state.mute === true
-                ? description[2]
-                : description[this.state.status]}
+                  ? description[2]
+                  : description[this.state.status]}
             </div>
           </center>
           <div className="pannel">
@@ -102,9 +109,9 @@ class Call extends React.Component {
                 className={
                   this.state.status === 3
                     ? "button_disable"
-                    : this.state.mute
-                    ? "button_pick"
-                    : "button_normal"
+                    : (this.state.mute
+                      ? "button_pick"
+                      : "button_normal")
                 }
                 onClick={(e) => {
                   console.log(e);
@@ -127,10 +134,10 @@ class Call extends React.Component {
                   this.state.status === 3
                     ? "button_disable"
                     : this.state.louder
-                    ? "button_pick"
-                    : "button_normal"
+                      ? "button_pick"
+                      : "button_normal"
                 }
-                onClick={(e) => {
+                onClick={() => {
                   this.setState({
                     louder: !this.state.louder,
                   });

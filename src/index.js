@@ -9,6 +9,8 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <img
+      //img elements must have an alt prop, either with meaningful text, or an empty string for decorative images.
+      alt=''
       src={cover}
       id="cover"
       style={{
@@ -18,13 +20,12 @@ root.render(
         zIndex: 99999,
         height: window.innerHeight,
         width: window.innerWidth,
-        animationName:"fadenum",
-        animationFillMode:"forwards",
+        animationName: "fadenum",
+        animationFillMode: "forwards",
         animationDuration: "1s",
       }}
     />
     <Mainlist />
-    {/* <App /> */}
   </React.StrictMode>
 );
 
