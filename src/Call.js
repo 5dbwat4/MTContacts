@@ -23,23 +23,23 @@ class Call extends React.Component {
     };
   }
 
-  ToChinese(group, company) {
-    return num2cn(group) + "团" + num2cn(company) + "连";
-  }
+  // ToChinese(group, company) {
+  //   return num2cn(group) + "团" + num2cn(company) + "连";
+  // }
 
-  AudioPath(group, company) {
-    return ( //DON'T REMOVE THE PARENTHESES
-      (process.env.PUBLIC_URL?.replace(/\/+$/, '') ?? "") //去掉末尾的斜杠，防止拼接产生连续斜杠
-      + `/audios/${group}-${company}.mp3`
-    )
-  }
+  // AudioPath(group, company) {
+  //   return ( //DON'T REMOVE THE PARENTHESES
+  //     (process.env.PUBLIC_URL?.replace(/\/+$/, '') ?? "") //去掉末尾的斜杠，防止拼接产生连续斜杠
+  //     + `/audios/${group}-${company}.mp3`
+  //   )
+  // }
 
   render() {
     return (
       <>
         <audio
           id="audio"
-          src={this.AudioPath(this.props.group, this.props.company)}
+          src={"./data/"+this.props.item.audio}
           autoPlay
           muted={this.state.mute}
           volume={this.state.volume}
@@ -87,7 +87,7 @@ class Call extends React.Component {
         <div style={{ color: "rgba(255, 255, 255, 0.9)" }}>
           <center style={{ margin: 20 }}>
             <div id="name">
-              {this.ToChinese(this.props.group, this.props.company)}
+              {this.props.item.title}
             </div>
           </center>
           <center>
@@ -153,11 +153,11 @@ class Call extends React.Component {
               </div>
               <div className="button_label">添加通话</div>
             </div>
-            <div className="container">
+            <div className="container" style={{ opacity: 0}}>
               <div className="button_disable">
-                <img src={svg4} alt="FaceTime" className="button_svg" />
+                {/* <img src={svg4} alt="FaceTime" className="button_svg" /> */}
               </div>
-              <div className="button_label">FaceTime</div>
+              {/* <div className="button_label">更多</div> */}
             </div>
             <div className="container">
               <div className="button_disable">

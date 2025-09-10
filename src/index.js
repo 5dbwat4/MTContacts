@@ -6,6 +6,10 @@ import Mainlist from "./Mainlist";
 import cover from "./assets/cover.png";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
+const data = await fetch("./data/index.json").then((res) => res.json());
+
+export { data };
 root.render(
   <React.StrictMode>
     <img

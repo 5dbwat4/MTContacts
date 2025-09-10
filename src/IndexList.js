@@ -2,32 +2,36 @@ import React from "react";
 import { IndexBar, List } from "antd-mobile";
 import { num2cn, cn2num } from "./transform";
 
-const companyNum = [
-  { title: "一团", count: 19 },
-  { title: "二团", count: 13 },
-  { title: "三团", count: 13 },
-  { title: "四团", count: 6 },
-];
+// const companyNum = [
+//   { title: "一团", count: 19 },
+//   { title: "二团", count: 13 },
+//   { title: "三团", count: 13 },
+//   { title: "四团", count: 6 },
+// ];
 
-const data = companyNum.map(({ title, count }) => ({
-  title,
-  items: Array.from({ length: count }, (_, i) => `${title}${num2cn(i + 1)}连`),
-}));
+// const data = companyNum.map(({ title, count }) => ({
+//   title,
+//   items: Array.from({ length: count }, (_, i) => `${title}${num2cn(i + 1)}连`),
+// }));
 
-console.log(data);
+// console.log(data);
+
+import { data } from ".";
+
+
 
 class IndexList extends React.Component {
-  setdata(iscall, group, company) {
+  setdata(iscall, item) {
     // console.log(`是否呼叫${num2cn(group)}团${num2cn(company)}连：${iscall}`);
-    this.props.setdata(iscall, group, company);
+    this.props.setdata(iscall, item);
   }
-  handleClick = (e) => {
-    let regimentCN = e.target.innerText.slice(0, 1);
-    let regiment = cn2num(regimentCN);
+  handleClick = (item) => {
+    // let regimentCN = e.target.innerText.slice(0, 1);
+    // let regiment = cn2num(regimentCN);
     // console.log("regiment", regiment);
-    let company = data[regiment - 1].items.indexOf(e.target.innerText) + 1;
+    // let company = data[regiment - 1].items.indexOf(e.target.innerText) + 1;
     // console.log("company", company);
-    this.setdata(true, regiment, company);
+    this.setdata(true, item);
   };
   render() {
     return (
@@ -44,8 +48,8 @@ class IndexList extends React.Component {
               >
                 <List>
                   {items.map((item, index) => (
-                    <List.Item key={index} onClick={this.handleClick}>
-                      <span>{item}</span>
+                    <List.Item key={index} onClick={() => this.handleClick(item)}>
+                      <span>{item.title}</span>
                     </List.Item>
                   ))}
                 </List>

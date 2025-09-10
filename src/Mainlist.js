@@ -8,17 +8,18 @@ class Mainlist extends React.Component {
     super(props);
     this.state = {
       iscall: false,
-      group: 0,
-      company: 0,
+      choice: {
+        title:"Unknown",
+        audio:"Unknown.mp3"
+      }
     };
   }
   setiscall = (iscall) => {
     this.setState({ iscall: iscall });
   };
-  setdata = (iscall, group, company) => {
+  setdata = (iscall, item) => {
     this.setState({ iscall: iscall });
-    this.setState({ group: group });
-    this.setState({ company: company });
+    this.setState({ choice: item });
   };
   render() {
     if (this.state.iscall === false) {
@@ -32,8 +33,7 @@ class Mainlist extends React.Component {
     } else {
       return (
         <Call
-          group={this.state.group}
-          company={this.state.company}
+          item={this.state.choice}
           setiscall={this.setiscall}
         />
       );
